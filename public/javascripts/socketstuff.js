@@ -1,4 +1,3 @@
-
 var socket = io('http://localhost:3000');
 
 socket.on('user message', function(data){
@@ -30,9 +29,7 @@ function handleFileSelect(evt) {
      if (!f.type.match('image.*')) {
        continue;
      }
-
      var reader = new FileReader();
-
      // Closure to capture the file information.
      reader.onload = (function(theFile) {
        return function(e) {

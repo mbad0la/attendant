@@ -2,6 +2,23 @@
 
 const storage = window.localStorage;
 
+// Method to insert new course option
+function putCourse(course) {
+
+  let courses = getCourses();
+  courses.push(course);
+  storage.setItem('courses', JSON.stringify(courses));
+
+}
+
+// Read active courses
+function getCourses() {
+
+  let courses = JSON.parse(storage.getItem('courses') || '[]');
+  return courses;
+
+}
+
 // Method to insert new lecture session into local storage
 function putSession(course, startTime, duration) {
 
@@ -15,7 +32,8 @@ function putSession(course, startTime, duration) {
 // Read active lectures in the current hall scope
 function getSessions() {
 
-  let lectures = JSON.parse(storage.getItem('lectures'));
+  let lectures = JSON.parse(storage.getItem('lectures') || '[]');
+  lectures = removeSessions(lectures);
   return lectures;
 
 }

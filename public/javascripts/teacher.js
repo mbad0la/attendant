@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
       putSession(course, Date.now(), Number(durationNodeValue));
 
       backToHome();
+      window.location.href = '/teacherview';
     } else {
       alert('A lecture is still active')
     }

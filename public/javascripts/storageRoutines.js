@@ -23,8 +23,9 @@ function getCourses() {
 function putSession(course, startTime, duration) {
 
   let lectures = getSessions();
+  let count = 0;
   lectures = removeSessions(lectures);
-  lectures.push({course, startTime, duration});
+  lectures.push({course, startTime, duration, count});
   storage.setItem('lectures', JSON.stringify(lectures));
 
 }
@@ -47,4 +48,14 @@ function removeSessions(lectures) {
 
   return updatedLectures;
 
+}
+
+function updateCount() {
+  var sessions = getSessions();
+  if(sessions.length == 1) {
+    sessions[0]['count']++;
+    storage.setItem('lectures', JSON.stringify(sessions))
+    return sessions[0]['count'];
+  }
+  return null;
 }

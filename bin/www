@@ -51,6 +51,10 @@ io.on('connection', function (socket) {
   socket.on('image', function(data) {
     io.in('COE').emit('image',data)
   })
+
+  socket.on('update count', function(data) {
+    io.in('COE').emit('update count',data)
+  })
 });
 
 

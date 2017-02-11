@@ -9,8 +9,18 @@ router.get('/', function(req, res, next) {
 });
 
 
-router.get('/inclass', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/teacherview', function(req, res, next) {
+  res.render('teacherview');
 });
+
+
+router.get('/studentview', function(req, res, next) {
+  res.render('studentview');
+});
+
+router.get('/inclass', function(req, res, next) {
+  res.render('index');
+});
+
 
 module.exports = router;

@@ -59,11 +59,14 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
   confirmSession.addEventListener('click', () => {
 
-    let durationNodeValue = document.getElementById('duration').value;
-    putSession(course, Date.now(), Number(durationNodeValue));
+    if (getSessions().length == 0) {
+      let durationNodeValue = document.getElementById('duration').value;
+      putSession(course, Date.now(), Number(durationNodeValue));
 
-    backToHome();
-
+      backToHome();
+    } else {
+      alert('A lecture is still active')
+    }
   });
 
   let backButtons = document.querySelectorAll('.back-to-home');

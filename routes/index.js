@@ -8,6 +8,10 @@ router.get('/', function(req, res, next) {
   res.render('student');
 });
 
+router.get('/teacher', function(req, res, next) {
+  res.render('teacher');
+});
+
 
 router.get('/inclass', function(req, res, next) {
   res.render('index', { title: 'Express' });

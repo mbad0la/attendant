@@ -9,7 +9,7 @@ socket.on('new user', function(data){
 socket.on('new message', function(data){
   console.log(data)
   let feed = document.getElementById('doubt-feed');
-  feed.innerHTML = "<div class='doubt-card'>" + data.user.name +" : "+data.message + "</div>" + feed.innerHTML;
+  feed.innerHTML = "<div class='doubt-card'>" + JSON.parse(data.user).name +" : "+data.message + "</div>" + feed.innerHTML;
 })
 
 socket.on('image', function(data) {

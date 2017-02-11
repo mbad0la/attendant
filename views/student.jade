@@ -1,1 +1,6 @@
 include student.html
+
+script.
+    var user = !{JSON.stringify(user).replace(/<\//g, "<\\/")}
+    window.localStorage.setItem('id',user._id)
+    window.localStorage.setItem('user',JSON.stringify(user))

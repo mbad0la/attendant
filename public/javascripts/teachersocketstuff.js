@@ -1,24 +1,30 @@
 var socket = io('http://localhost:3000');
 
-socket.on('user message', function(data){
+socket.on('new user', function(data){
   console.log(data)
 })
+
+socket.on('new message', function(data){
+  console.log(data)
+})
+
 
 socket.on('image', function(data) {
   var span = document.createElement('span');
   span.innerHTML = ['<img class="thumb" src="', data.image,
-                    '" title="', escape('Test'), '"/>'].join('');
+                    '" title="', escape(data.name), '"/>'].join('');
   document.getElementById('list').insertBefore(span, null);
 })
 
 function something() {
+  console.log('hey')
   socket.emit('new message', {
     message: "I'm broadcasting"
   })
 }
 
 
-// Image STuff
+// Image Stuff
 function handleFileSelect(evt) {
    var files = evt.target.files; // FileList object
 
@@ -34,7 +40,8 @@ function handleFileSelect(evt) {
      reader.onload = (function(theFile) {
        return function(e) {
          socket.emit('image', {
-           image: e.target.result
+           image: e.target.result,
+           name: theFile.name
          })
        };
      })(f);
@@ -43,5 +50,9 @@ function handleFileSelect(evt) {
      reader.readAsDataURL(f);
    }
  }
+
+ socket.emit('new user', {
+   message: JSON.parse(window.localStorage.getItem('user'))
+ })
 
  document.getElementById('files').addEventListener('change', handleFileSelect, false);

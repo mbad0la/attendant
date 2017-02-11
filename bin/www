@@ -39,12 +39,16 @@ var io = require('socket.io')(server);
 
 io.on('connection', function (socket) {
   socket.join('COE');
+
+  socket.on('new user', function(data) {
+    io.in('COE').emit('new user',data)
+  })
+
   socket.on('new message', function(data) {
-    io.in('COE').emit('user message',data)
+    io.in('COE').emit('new message',data)
   })
 
   socket.on('image', function(data) {
-    console.log('Image recieved')
     io.in('COE').emit('image',data)
   })
 });

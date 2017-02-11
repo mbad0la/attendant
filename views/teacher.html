@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stylesheets/ui.css">
+  </head>
+  <body>
+    <section>
+      <h1>Courses</h1>
+      <ul id="course-list">
+      </ul>
+    </section>
+    <section>
+      <div id="add-new-course">Add New Course</div>
+    </section>
+    <section id="confirm-session-pop-up">
+      <span>Duration</span>
+      <select id="duration">
+        <option value="1">1 hr</option>
+        <option value="0.5">0.5 hr</option>
+        <option value="2">2 hr</option>
+      </select>
+      <div>
+        <div id="confirm-session">Confirm</div>
+        <div class="back-to-home">Back</div>
+      </div>
+    </section>
+    <section id="add-new-course-option">
+      <input type="text" id="course-name-inp" placeholder="Course Name">
+      <div>
+        <div id="confirm-course">Add</div>
+        <div class="back-to-home">Back</div>
+      </div>
+    </section>
+    <section id="lightbox"></section>
+    <script src="javascripts/storageRoutines.js"></script>
+    <script src="javascripts/teacher.js"></script>
+  </body>
+</html>

@@ -16,6 +16,11 @@ router.get('/studentview', function(req, res, next) {
   res.render('studentview');
 });
 
+router.get('/teacher', function(req, res, next) {
+  res.render('teacher');
+});
+
+
 router.get('/inclass', function(req, res, next) {
   res.render('index');
 });

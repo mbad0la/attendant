@@ -24,10 +24,17 @@ router.post('/login', function(req, res, next) {
       // save the user
       newUser.save(function(err,user) {
         if (err) throw err;
+        if(req.body.teacher === 'on') {
+          res.redirect('/teacherview');
+        }
         res.render('student',{'user':user,'message':'Verified'});
       });
 
     } else {
+
+      if(req.body.teacher === true) {
+        res.redirect('/teacherview');
+      }
 
       if(req.body.id === user._id) {
         res.render('student',{'user':user,'message':'Verified'});

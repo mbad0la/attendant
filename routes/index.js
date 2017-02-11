@@ -8,11 +8,9 @@ router.get('/', function(req, res, next) {
   res.render('student');
 });
 
-
 router.get('/teacherview', function(req, res, next) {
   res.render('teacherview');
 });
-
 
 router.get('/studentview', function(req, res, next) {
   res.render('studentview');

@@ -7,6 +7,10 @@ router.get('/login', function(req, res, next) {
   res.render('login');
 });
 
+router.get('/student',function(req,res,next) {
+  res.render('student');
+})
+
 router.post('/login', function(req, res, next) {
   // create a new user
 

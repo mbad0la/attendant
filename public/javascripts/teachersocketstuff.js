@@ -1,17 +1,32 @@
 var socket = io('http://localhost:3000');
 
+var students = 0;
+
 socket.on('new user', function(data){
   console.log(data)
 })
 
 socket.on('new message', function(data){
   console.log(data)
+  let feed = document.getElementById('doubt-feed');
+  feed.innerHTML = "<div class='doubt-card'>" + data.user.name +" : "+data.message + "</div>" + feed.innerHTML;
 })
 
-
 socket.on('image', function(data) {
+
+  var source = data.image
+
   var span = document.createElement('span');
-  span.innerHTML = ['<img class="thumb" src="', data.image,
+  var name = data.name.split('.');
+  if(data.name.split('.')[name.length - 1] === 'pdf') {
+    source = '/images/pdf.png';
+  }
+
+  if(data.name.split('.')[name.length - 1] === 'docx') {
+    source = '/images/docx.png';
+  }
+
+  span.innerHTML = ['<img class="thumb" src="', source,
                     '" title="', escape(data.name), '"/>'].join('');
   document.getElementById('list').insertBefore(span, null);
 })
@@ -19,7 +34,8 @@ socket.on('image', function(data) {
 function something() {
   console.log('hey')
   socket.emit('new message', {
-    message: "I'm broadcasting"
+    user: window.localStorage.getItem('user'),
+    message: document.getElementById('message').value
   })
 }
 
@@ -56,4 +72,5 @@ function handleFileSelect(evt) {
    message: JSON.parse(window.localStorage.getItem('user'))
  })
 
- document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+document.getElementById('files').addEventListener('change', handleFileSelect, false);

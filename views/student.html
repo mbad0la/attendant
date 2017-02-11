@@ -52,7 +52,9 @@
 <div id="check-in-wrapper" style="text-align: center;"><button id="check-in" type="button" onClick="markAttendance()" >Check In</button></div>
 <script src="javascripts/storageRoutines.js"></script>
 
+<script src="socket.io/socket.io.js"></script>
 <script>
+var socket = io('http://localhost:3000');
 let courses;
 // window.localStorage.setItem("event","CS401");
 courses = getSessions();
@@ -94,9 +96,10 @@ if (courses.length == 1) {
   document.getElementById("time").innerHTML= "Refresh for updates";
 }
 
-
-
 function markAttendance(){
+  var count = updateCount();
+  console.log(count);
+  socket.emit('update count',{count:count});
   window.location.href='/studentview';
 }
 </script>

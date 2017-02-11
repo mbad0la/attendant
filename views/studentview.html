@@ -10,6 +10,30 @@
       font-family: Open Sans,"sans serif";
     }
 
+
+    input[type="text"] {
+      margin-top: 15px;
+      border:0px;
+      outline: 0px;
+      border-bottom: 1px solid black;
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .button {
+      margin-top: 20px;
+      font-size: 22px;
+      width: 253px;
+      outline: none;
+      border: 0px;
+      border: 2px solid teal;
+      color: teal;
+      background-color: #fff;
+      border-radius: 10px;
+      transition: all 0.3s;
+      margin-bottom: 22px;
+    }
+
     .thumb {
     height: 150px;
     border: 1px solid #000;
@@ -22,7 +46,9 @@
   <center>
     <h1>Welcome to The Study Circle</h1>
     <br>
-
+      <input type="text" placeholder="Send Message" name="message" id="message" />
+      <br>
+      <button class="button" onclick="something()">Send Message</button>
     <br>
     <output id="list"></output>
   </center>

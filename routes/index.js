@@ -8,15 +8,18 @@ router.get('/', function(req, res, next) {
   res.render('student');
 });
 
-
 router.get('/teacherview', function(req, res, next) {
   res.render('teacherview');
 });
 
-
 router.get('/studentview', function(req, res, next) {
   res.render('studentview');
 });
+
+router.get('/teacher', function(req, res, next) {
+  res.render('teacher');
+});
+
 
 router.get('/inclass', function(req, res, next) {
   res.render('index');
